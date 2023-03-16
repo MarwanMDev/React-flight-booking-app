@@ -13,6 +13,17 @@ const Navbar = () => {
   const hideNavBar = () => {
     setActive('navBarMenu');
   };
+
+  const [bg, setBg] = useState('navBarTwo');
+  const addBgColor = () => {
+    if (window.scrollY >= 10) {
+      setBg('navBarTwo navbarWithBg');
+    } else {
+      setBg('navBarTwo');
+    }
+  };
+  window.addEventListener('scroll', addBgColor);
+
   return (
     <div className="navBar flex">
       <div className="navBarOne flex">
@@ -34,7 +45,7 @@ const Navbar = () => {
           <span>Sign Out</span>
         </div>
       </div>
-      <div className="navBarTwo">
+      <div className={bg}>
         <div className="logoDiv">
           <img src={logo} className="logo" />
         </div>
